@@ -1,0 +1,7 @@
+[user]
+	name = Chance Smith
+	email = chance.smith@lifeway.com
+[alias]
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+[core]
+	excludesfile = /Users/chance.smith/.gitignore_global
