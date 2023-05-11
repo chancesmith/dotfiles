@@ -31,6 +31,11 @@ spoonInstall:andUse("ReloadConfiguration", {
   start = true
 })
 
+-- Emojis
+hs.hotkey.bind(hyper, "e", function ()
+  hs.eventtap.keyStroke({"ctrl", "cmd"}, "space")
+end)
+
 -- Mic Mute
 spoon.SpoonInstall:andUse("MicMute")
 spoon.MicMute:bindHotkeys({toggle = {hyper, "m"}}, 1)
