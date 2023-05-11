@@ -24,12 +24,19 @@ spoonInstall:andUse("AppLauncher", {
 
 hs.hotkey.bind(hyper, "g", function ()
   hs.execute("open https://github.com/notifications")
-end)
+end)    
 
 spoonInstall:andUse("ReloadConfiguration", {
   hotkeys = { reloadConfiguration = { hyper, "R" } },
   start = true
 })
+
+-- Sound Pad
+hs.hotkey.bind(hyper, "6", function ()
+  hs.alert.show("Womp Womp")
+  hs.sound.getByFile("./sounds/womp-womp.mp3"):play()
+  hs.sound.getByFile("./sounds/womp-womp.mp3"):device(nil):play()  -- WIP: trying to play so others can here the sound
+end)
 
 -- Emojis
 hs.hotkey.bind(hyper, "e", function ()
