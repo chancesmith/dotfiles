@@ -22,6 +22,16 @@ spoonInstall:andUse("AppLauncher", {
   }
 })
 
+-- Open Folders
+hs.hotkey.bind(hyper, "s", function ()
+  hs.execute("open ~/Dropbox/Screenshots")
+end)
+
+hs.hotkey.bind(hyper, "d", function ()
+  hs.execute("open ~/Downloads")
+end)
+
+-- Open Websites
 hs.hotkey.bind(hyper, "g", function ()
   hs.execute("open https://github.com/notifications")
 end)    
