@@ -38,11 +38,15 @@ end)
 
 hs.hotkey.bind(hyper, "l", function ()
   local lifewayOneZoom = "https://lifeway.zoom.us/j/99535222109?pwd=OFNnOTRIZi9IR2xyN0wvcjN2R1ZEUT09"
-
+  
   -- copy to clipboard
   hs.pasteboard.setContents(lifewayOneZoom)
   -- open in browser
   hs.execute("open " .. lifewayOneZoom)
+end)
+
+hs.hotkey.bind(hyper, "j", function ()
+  hs.execute("open https://lifeway.atlassian.net/jira/software/c/projects/DCD/boards/416/timeline?quickFilter=1228&statuses=4%2C2")
 end)
 
 spoonInstall:andUse("ReloadConfiguration", {
