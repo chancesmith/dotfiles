@@ -36,6 +36,14 @@ hs.hotkey.bind(hyper, "g", function ()
   hs.execute("open https://github.com/notifications")
 end)
 
+hs.hotkey.bind(hyper, "v", function ()
+  hs.execute("open https://vault.prod.lifeway.com/ui/vault/secrets/kv/show/digital-exp-dce/test-accounts/int/lifeway-one")
+end)
+
+hs.hotkey.bind(hyper, "c", function ()
+  hs.execute("open https://chat.openai.com/?model=gpt-4")
+end)
+
 hs.hotkey.bind(hyper, "l", function ()
   local lifewayOneZoom = "https://lifeway.zoom.us/j/99535222109?pwd=OFNnOTRIZi9IR2xyN0wvcjN2R1ZEUT09"
   
@@ -46,7 +54,8 @@ hs.hotkey.bind(hyper, "l", function ()
 end)
 
 hs.hotkey.bind(hyper, "j", function ()
-  hs.execute("open https://lifeway.atlassian.net/jira/software/c/projects/DCD/boards/416/timeline?quickFilter=1228&statuses=4%2C2")
+  local lw1Jira = "https://lifeway.atlassian.net/jira/software/c/projects/DCD/boards/416/timeline?statuses=2%2C4"
+  hs.execute("open " .. lw1Jira)
 end)
 
 spoonInstall:andUse("ReloadConfiguration", {
