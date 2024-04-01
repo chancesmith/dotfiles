@@ -58,6 +58,11 @@ hs.hotkey.bind(hyper, "j", function ()
   hs.execute("open " .. lw1Jira)
 end)
 
+hs.hotkey.bind(hyper, "i", function ()
+  local lw1Jira = "https://lifeway-christian-resources.sentry.io/issues/?environment=production&project=4503902988730368&statsPeriod=14d"
+  hs.execute("open " .. lw1Jira)
+end)
+
 spoonInstall:andUse("ReloadConfiguration", {
   hotkeys = { reloadConfiguration = { hyper, "R" } },
   start = true
