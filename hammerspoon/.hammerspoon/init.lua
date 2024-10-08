@@ -44,6 +44,14 @@ hs.hotkey.bind(hyper, "c", function ()
   hs.execute("open https://chat.openai.com/?model=gpt-4")
 end)
 
+hs.hotkey.bind(hyper, "c", function ()
+  hs.execute("open https://outlook.office365.com/calendar/view/workweek")
+end)
+
+hs.hotkey.bind(hyper, "o", function ()
+  hs.execute("open https://outlook.office365.com/mail")
+end)
+
 hs.hotkey.bind(hyper, "l", function ()
   local lifewayOneZoom = "https://lifeway.zoom.us/j/99535222109?pwd=OFNnOTRIZi9IR2xyN0wvcjN2R1ZEUT09"
   
@@ -67,6 +75,24 @@ spoonInstall:andUse("ReloadConfiguration", {
   hotkeys = { reloadConfiguration = { hyper, "R" } },
   start = true
 })
+
+-- Open apps
+
+hs.hotkey.bind(hyper, "a", function ()
+  hs.application.launchOrFocus("Activity Monitor")
+end)
+
+hs.hotkey.bind(hyper, "z", function ()
+  hs.application.launchOrFocus("Zed")
+end)
+
+hs.hotkey.bind(hyper, "v", function ()
+  hs.application.launchOrFocus("Visual Studio Code")
+end)
+
+hs.hotkey.bind(hyper, "h", function ()
+  hs.application.launchOrFocus("Hyper")
+end)
 
 -- Sound Pad
 hs.hotkey.bind(hyper, "6", function ()
