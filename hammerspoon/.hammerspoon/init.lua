@@ -4,20 +4,61 @@ local hyper = {"shift", "alt", "ctrl", "cmd"}
 -- Pre-downloaded via external script
 local spoonInstall = hs.loadSpoon("SpoonInstall")
 
+-- Move window to the left half of the screen
+hs.hotkey.bind(meh, "left", function()
+  local win = hs.window.focusedWindow()
+  local f = win:frame()
+  local screen = win:screen()
+  local max = screen:frame()
+  
+  f.x = max.x
+  f.y = max.y
+  f.w = max.w / 2
+  f.h = max.h
+  win:setFrame(f)
+end)
+
+-- Move window to the right half of the screen
+hs.hotkey.bind(meh, "right", function()
+  local win = hs.window.focusedWindow()
+  local f = win:frame()
+  local screen = win:screen()
+  local max = screen:frame()
+  
+  f.x = max.x + (max.w / 2)
+  f.y = max.y
+  f.w = max.w / 2
+  f.h = max.h
+  win:setFrame(f)
+end)
+
+-- Full screen
+hs.hotkey.bind(meh, "f", function()
+  hs.window.focusedWindow():moveToUnit({0, 0, 1, 1})
+end)
+
+-- Center window
+hs.hotkey.bind(meh, "c", function()
+  hs.window.focusedWindow():centerOnScreen()
+end)
+
 spoonInstall:andUse("AppLauncher", {
   config = {
-    modifiers = meh
+    modifiers = hyper
   },
   hotkeys = {
     b = "Brave Browser",
-    c = "Visual Studio Code",
+    c = "Claude", -- ai [c]hat
+    e = "Visual Studio Code", -- code [e]ditor
     g = "Github Desktop", -- git
     h = "Hyper",
-    m = "Superhuman", -- mail
+    k = "ghostty",
+    m = "Microsoft Outlook", -- [m]ail
     n = "Obsidian", -- notes
     p = "Postman",
     s = "Slack",
     t = "Microsoft Teams",
+    x = "Xcode", -- [x]code
     z = "zoom.us"
   }
 })
@@ -32,41 +73,41 @@ hs.hotkey.bind(hyper, "d", function ()
 end)
 
 -- Open Websites
-hs.hotkey.bind(hyper, "g", function ()
+hs.hotkey.bind(meh, "g", function ()
   hs.execute("open https://github.com/notifications")
 end)
 
-hs.hotkey.bind(hyper, "v", function ()
+hs.hotkey.bind(meh, "v", function ()
   hs.execute("open https://vault.prod.lifeway.com/ui/vault/secrets/kv/show/digital-exp-dce/test-accounts/int/lifeway-one")
 end)
 
-hs.hotkey.bind(hyper, "c", function ()
+hs.hotkey.bind(meh, "c", function ()
   hs.execute("open https://chat.openai.com/?model=gpt-4")
 end)
 
-hs.hotkey.bind(hyper, "c", function ()
+hs.hotkey.bind(meh, "c", function ()
   hs.execute("open https://outlook.office365.com/calendar/view/workweek")
 end)
 
-hs.hotkey.bind(hyper, "o", function ()
+hs.hotkey.bind(meh, "o", function ()
   hs.execute("open https://outlook.office365.com/mail")
 end)
 
-hs.hotkey.bind(hyper, "l", function ()
-  local lifewayOneZoom = "https://lifeway.zoom.us/j/99535222109?pwd=OFNnOTRIZi9IR2xyN0wvcjN2R1ZEUT09"
+-- hs.hotkey.bind(meh, "l", function ()
+--   local lifewayOneZoom = "https://lifeway.zoom.us/j/99535222109?pwd=OFNnOTRIZi9IR2xyN0wvcjN2R1ZEUT09"
   
-  -- copy to clipboard
-  hs.pasteboard.setContents(lifewayOneZoom)
-  -- open in browser
-  hs.execute("open " .. lifewayOneZoom)
-end)
+--   -- copy to clipboard
+--   hs.pasteboard.setContents(lifewayOneZoom)
+--   -- open in browser
+--   hs.execute("open " .. lifewayOneZoom)
+-- end)
 
-hs.hotkey.bind(hyper, "j", function ()
+hs.hotkey.bind(meh, "j", function ()
   local lw1Jira = "https://lifeway.atlassian.net/jira/software/c/projects/DCD/boards/416/timeline?statuses=2%2C4"
   hs.execute("open " .. lw1Jira)
 end)
 
-hs.hotkey.bind(hyper, "i", function ()
+hs.hotkey.bind(meh, "i", function ()
   local lw1Jira = "https://lifeway-christian-resources.sentry.io/issues/?environment=production&project=4503902988730368&statsPeriod=14d"
   hs.execute("open " .. lw1Jira)
 end)
