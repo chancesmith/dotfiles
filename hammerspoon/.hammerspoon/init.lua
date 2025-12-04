@@ -1,3 +1,5 @@
+local secrets = require("secrets")
+
 local meh = {"shift", "alt", "ctrl"}
 local hyper = {"shift", "alt", "ctrl", "cmd"}
 
@@ -89,27 +91,42 @@ hs.hotkey.bind(meh, "c", function ()
   hs.execute("open https://outlook.office365.com/calendar/view/workweek")
 end)
 
-hs.hotkey.bind(meh, "o", function ()
-  hs.execute("open https://outlook.office365.com/mail")
+hs.hotkey.bind(meh, "m", function ()
+  hs.execute("open https://mail.google.com/mail/u/0/")
 end)
 
--- hs.hotkey.bind(meh, "l", function ()
---   local lifewayOneZoom = "https://lifeway.zoom.us/j/99535222109?pwd=OFNnOTRIZi9IR2xyN0wvcjN2R1ZEUT09"
+hs.hotkey.bind(meh, "1", function ()
+  local secretURL = secrets.ZOOM_LIFEWAY_ONE
   
---   -- copy to clipboard
---   hs.pasteboard.setContents(lifewayOneZoom)
---   -- open in browser
---   hs.execute("open " .. lifewayOneZoom)
--- end)
+  if secretURL and secretURL ~= "" then
+      hs.urlevent.openURL(secretURL)
+  else
+      hs.alert.show("No URL found in ZOOM_LIFEWAY_ONE")
+  end
+end)
+
+hs.hotkey.bind(meh, "2", function ()
+  local secretURL = secrets.ZOOM_LIFEWAY_ONE_READER 
+  
+  if secretURL and secretURL ~= "" then
+      hs.urlevent.openURL(secretURL)
+  else
+      hs.alert.show("No URL found in ZOOM_LIFEWAY_ONE_READER")
+  end
+end)
 
 hs.hotkey.bind(meh, "j", function ()
-  local lw1Jira = "https://lifeway.atlassian.net/jira/software/c/projects/DCD/boards/416/timeline?statuses=2%2C4"
+  local lw1Jira = "https://lifeway.atlassian.net/jira/software/c/projects/DCD/boards/489?assignee=64170c71af3b93d8ecf2bf15"
   hs.execute("open " .. lw1Jira)
 end)
 
-hs.hotkey.bind(meh, "i", function ()
+hs.hotkey.bind(meh, "s", function () -- Sentry
   local lw1Jira = "https://lifeway-christian-resources.sentry.io/issues/?environment=production&project=4503902988730368&statsPeriod=14d"
   hs.execute("open " .. lw1Jira)
+end)
+
+hs.hotkey.bind(meh, "p", function () -- Perplexity
+  hs.execute("open https://www.perplexity.ai/" )
 end)
 
 spoonInstall:andUse("ReloadConfiguration", {
@@ -123,9 +140,6 @@ hs.hotkey.bind(hyper, "a", function ()
   hs.application.launchOrFocus("Activity Monitor")
 end)
 
-hs.hotkey.bind(hyper, "z", function ()
-  hs.application.launchOrFocus("Zed")
-end)
 
 hs.hotkey.bind(hyper, "v", function ()
   hs.application.launchOrFocus("Visual Studio Code")
