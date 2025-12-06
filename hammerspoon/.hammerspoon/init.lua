@@ -1,3 +1,9 @@
+-- Hammerspoon hotkeys
+--   meh   (ctrl+alt+shift): window management + quick links (lighter / transient actions)
+--   hyper (ctrl+alt+shift+cmd): app launchers + system actions (heavier / global actions)
+-- This mirrors common macOS "meh/hyper" conventions and keeps priority clear:
+--   editor -> compiler -> tests -> manual tests -> runtime
+
 local secrets = require("secrets")
 
 local meh = {"shift", "alt", "ctrl"}
@@ -6,6 +12,7 @@ local hyper = {"shift", "alt", "ctrl", "cmd"}
 -- Pre-downloaded via external script
 local spoonInstall = hs.loadSpoon("SpoonInstall")
 
+-- === MEH: Window management ===
 -- Move window to the left half of the screen
 hs.hotkey.bind(meh, "left", function()
   local win = hs.window.focusedWindow()
@@ -44,6 +51,7 @@ hs.hotkey.bind(meh, "c", function()
   hs.window.focusedWindow():centerOnScreen()
 end)
 
+-- === HYPER: App launcher spoon ===
 spoonInstall:andUse("AppLauncher", {
   config = {
     modifiers = hyper
@@ -65,8 +73,8 @@ spoonInstall:andUse("AppLauncher", {
   }
 })
 
--- Open Folders
-hs.hotkey.bind(hyper, "s", function ()
+-- === HYPER: Open folders (system actions) ===
+hs.hotkey.bind(hyper, "o", function ()
   hs.execute("open ~/Dropbox/Screenshots")
 end)
 
@@ -74,7 +82,7 @@ hs.hotkey.bind(hyper, "d", function ()
   hs.execute("open ~/Downloads")
 end)
 
--- Open Websites
+-- === MEH: Quick links (lighter actions) ===
 hs.hotkey.bind(meh, "g", function ()
   hs.execute("open https://github.com/notifications")
 end)
@@ -83,9 +91,9 @@ hs.hotkey.bind(meh, "v", function ()
   hs.execute("open https://vault.prod.lifeway.com/ui/vault/secrets/kv/show/digital-exp-dce/test-accounts/int/lifeway-one")
 end)
 
-hs.hotkey.bind(meh, "c", function ()
-  hs.execute("open https://chat.openai.com/?model=gpt-4")
-end)
+-- hs.hotkey.bind(meh, "c", function ()
+--   hs.execute("open https://chat.openai.com/?model=gpt-4")
+-- end)
 
 hs.hotkey.bind(meh, "c", function ()
   hs.execute("open https://outlook.office365.com/calendar/view/workweek")
@@ -154,11 +162,6 @@ hs.hotkey.bind(hyper, "6", function ()
   hs.alert.show("Womp Womp")
   hs.sound.getByFile("./sounds/womp-womp.mp3"):play()
   hs.sound.getByFile("./sounds/womp-womp.mp3"):device(nil):play()  -- WIP: trying to play so others can here the sound
-end)
-
--- Emojis
-hs.hotkey.bind(hyper, "e", function ()
-  hs.eventtap.keyStroke({"ctrl", "cmd"}, "space")
 end)
 
 hs.notify.new({title='Hammerspoon', informativeText='Everything is hawt 🔥'}):send()
