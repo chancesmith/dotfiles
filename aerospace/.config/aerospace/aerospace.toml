@@ -1,3 +1,5 @@
 [mode.main.binding]
-cmd-alt-ctrl-shift-space = ['layout floating tiling']  # Toggle pop-out; Hyper key (mapped in karabiner/hammerspoon)
-alt-f = 'fullscreen'  # Quick fullscreen toggle
+cmd-alt-ctrl-shift-space = [
+    'layout floating tiling',
+] # Toggle pop-out; Hyper key (mapped in karabiner/hammerspoon)
+alt-f = 'fullscreen' # Quick fullscreen toggle
