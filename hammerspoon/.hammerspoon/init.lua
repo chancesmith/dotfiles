@@ -57,6 +57,7 @@ local mehQuickLinks = {
   { key = "k", url = "https://grok.com/" },
   { key = "l", url = "https://claude.ai/" },
   { key = "u", url = "https://www.loom.com/settings/users"},
+  { key = "c", url = "https://lifeway.atlassian.net/wiki/spaces/DCE/folder/5294882841?atlOrigin=eyJpIjoiZDEwOTQxMzQxYmRjNDU3Njk0YmU0Njk1M2Q3N2JhOTYiLCJwIjoiYyJ9"}, -- SDM Folder in confluence
   { key = "o", url = "https://lifewaychristianresources-my.sharepoint.com/my?csf=1&web=1&e=4L4iF4&id=%2Fpersonal%2Fchance%5Fsmith%5Flifeway%5Fcom%2FDocuments%2FSDM&FolderCTID=0x0120001CC2D9AE130C0C468A19E85185A451BB"}, -- SDM Folder in OneDrive
   { key = "s", url = "https://lifewaychristianresources-my.sharepoint.com/:x:/r/personal/chance_smith_lifeway_com/_layouts/15/Doc.aspx?sourcedoc=%7B7723327B-4E1F-4860-9ECB-A2E8A566656F%7D&file=Chance%20Smith%20employees.xlsx&action=default&mobileredirect=true"} -- Staff sheet
 }
