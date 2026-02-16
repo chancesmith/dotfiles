@@ -109,7 +109,102 @@ alias yws="yarn workspace mobile start"
 alias yyws="yarn && yarn workspace mobile start"
 alias lwd="cd ~/wip/lifeway-discipleship"
 
-source ~/.zshrc-import
+# source ~/.zshrc-import
+## location shortcuts
+alias work='cd ~/wip/'
+alias wip='cd ~/wip/'
+alias home='cd ~'
+
+## get rid of command not found ##
+alias cd..='cd ..'
+
+## a quick way to get out of current directory ##
+alias ..='cd ..'
+
+## fix and faster open directory ##
+alias open.='open .'
+alias o.='open .'
+
+alias speed='wget -O /dev/null http://speedtest.wdc01.softlayer.com/downloads/test10.zip'
+alias speedtest='/usr/bin/open -a "/Applications/Google Chrome.app" "http://www.speedtest.net/"'
+
+## git
+alias gs='git status -s'
+alias ga='git add .'
+alias gaa='git add --all'
+# alias gc='git commit -m'
+alias gca='git commit --amend -m'
+alias gl='git pull'
+alias glg='git log --graph --abbrev-commit --decorate --date=relative --all'
+alias gfo='git fetch origin'
+alias glm='git fetch origin'
+alias gp='git push'
+alias gco='git checkout'
+alias gch='git checkout'
+alias gk='git checkout'
+alias gkm='git checkout main'
+alias gkma='git checkout main'
+alias gkb='git checkout -b'
+alias gpom="git pull origin main"
+alias gd='git diff | mate'
+alias gb='git branch'
+alias gba='git branch -a'
+alias del='git branch -d'
+alias gr='git remote'
+alias gcl='git clone'
+# just in case
+alias got='git '
+alias get='git '
+alias gin='touch .gitignore && echo "node_modules/" >> .gitignore && git rm -r --cached node_modules ; git status'
+alias gr='git reset'
+## zips up uncommited changes
+alias gitzip='zip modified.zip $(git status -s | egrep "M|A|AM" | rev | cut -d" " -f1 | rev)'
+
+## yarn
+alias y='yarn'
+alias ys='yarn start'
+alias yys='yarn && yarn start'
+alias yd='yarn dev'
+alias yyd='yarn && yarn dev'
+alias yd='yarn dev'
+alias yb='yarn build'
+alias yt='yarn test'
+alias ytc='yarn test --coverage'
+alias ya='yarn add'
+alias yad='yarn add --dev'
+alias ycc='yarn cache clean'
+alias yw="yarn workspace"
+
+## yarn - update all packages and update package.json
+alias yup='ncu --upgrade --interactive && yarn upgrade'
+
+## adds simpler Vi
+alias v="vi"
+
+## node
+alias rmnode='rm -rf ./node_modules'
+alias nvmrc='node -v > .nvmrc'
+
+## docker
+alias d='docker'
+## docker-compose
+alias dc='docker compose'
+alias dcu='docker compose up'
+alias dcd='docker compose down'
+alias dcb='docker compose build'
+alias dcdu='docker compose down && docker-compose build && docker-compose up'
+alias dcp='docker compose down && git pull && docker-compose build && docker-compose up'
+# backend - docker helpers
+alias dcbuild='dc stop api && dc build && dc up -d api'
+
+## terminal auto fixing (too crude for me)
+eval $(thefuck --alias)
+alias please='fuck'
+alias pls='fuck'
+
+## github cli
+alias pr='gh pr create'
+## END sourcing zshrc-import
 
 alias gec="npx git-emoji-commit"
 
@@ -138,4 +233,5 @@ export SDKMAN_DIR="$HOME/.sdkman"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
-PATH=~/.console-ninja/.bin:$PATH
+PATH=~/.console-ninja/.bin:$PATHeval "$(~/.local/bin/mise activate zsh)"
+eval "$(/opt/homebrew/bin/mise activate zsh)"

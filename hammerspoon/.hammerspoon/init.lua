@@ -21,7 +21,7 @@ spoonInstall:andUse("AppLauncher", {
     a = "Activity Monitor",
     b = "Brave Browser",
     c = "Claude", -- ai [c]hat
-    e = "Visual Studio Code", -- code [e]ditor
+    e = "Zed", -- code [e]ditor
     v = "Visual Studio Code",
     g = "Github Desktop", -- git
     h = "Hyper",
@@ -59,7 +59,9 @@ local mehQuickLinks = {
   { key = "u", url = "https://www.loom.com/settings/users"},
   { key = "c", url = "https://lifeway.atlassian.net/wiki/spaces/DCE/folder/5294882841?atlOrigin=eyJpIjoiZDEwOTQxMzQxYmRjNDU3Njk0YmU0Njk1M2Q3N2JhOTYiLCJwIjoiYyJ9"}, -- SDM Folder in confluence
   { key = "o", url = "https://lifewaychristianresources-my.sharepoint.com/my?csf=1&web=1&e=4L4iF4&id=%2Fpersonal%2Fchance%5Fsmith%5Flifeway%5Fcom%2FDocuments%2FSDM&FolderCTID=0x0120001CC2D9AE130C0C468A19E85185A451BB"}, -- SDM Folder in OneDrive
-  { key = "s", url = "https://lifewaychristianresources-my.sharepoint.com/:x:/r/personal/chance_smith_lifeway_com/_layouts/15/Doc.aspx?sourcedoc=%7B7723327B-4E1F-4860-9ECB-A2E8A566656F%7D&file=Chance%20Smith%20employees.xlsx&action=default&mobileredirect=true"} -- Staff sheet
+  { key = "e", url = "https://lifewaychristianresources-my.sharepoint.com/:x:/r/personal/chance_smith_lifeway_com/_layouts/15/Doc.aspx?sourcedoc=%7B7723327B-4E1F-4860-9ECB-A2E8A566656F%7D&file=Chance%20Smith%20employees.xlsx&action=default&mobileredirect=true"}, -- Employees sheet
+  { key = "f", url = "https://andy23512.com/alnitak/layout-viewer" }, -- CharaChorder layout viewer (find keys)
+  { key = "r", url = "https://charachorder.io/config/layout/" } -- CharaChorder config (change layout)
 }
 
 for _, link in ipairs(mehQuickLinks) do
@@ -93,5 +95,28 @@ spoonInstall:andUse("ReloadConfiguration", {
   hotkeys = { reloadConfiguration = { hyper, "R" } },
   start = true
 })
+
+-- Copy on thumb‑button‑1 (Button 4) and Paste on thumb‑button‑2 (Button 5)
+hs.eventtap.new({hs.eventtap.event.types.otherMouseDown}, function(event)
+    local button = event:getProperty(hs.eventtap.event.properties.mouseEventButtonNumber)
+    if button == 4 then
+        hs.eventtap.keyStroke({"cmd"}, "c")
+        return true  -- Delete the event
+    elseif button == 5 then
+        hs.eventtap.keyStroke({"cmd"}, "v")
+        return true  -- Delete the event
+    end
+    return false  -- Pass through other mouse buttons
+end):start()
+
+-- Toggle Dictation in System Settings
+local function toggleDictation()
+  -- Open Dictation settings in System Settings
+  hs.execute("open x-apple.systempreferences:com.apple.preference.keyboard?Dictation")
+end
+
+hs.hotkey.bind({"ctrl", "alt"}, "D", function()
+  toggleDictation()
+end)
 
 hs.notify.new({title='Hammerspoon', informativeText='Everything is hawt 🔥'}):send()
